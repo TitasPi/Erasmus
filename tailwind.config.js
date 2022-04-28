@@ -16,11 +16,11 @@ module.exports = {
       'lg': '1920px',
       // => @media (min-width: 1920px) { ... }
     },
-    spacing: {
-      sm: '16px',
-      md: '24px',
-      lg: '24px',
-    }
+    // spacing: {
+    //   sm: '16px',
+    //   md: '24px',
+    //   lg: '24px',
+    // }
   },
   plugins: [],
 }

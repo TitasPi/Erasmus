@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  border-radius: 5px;
+}
+.background {
+    background: url('/img/welcome-background-0.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.8;
+    transition: all 1s ease-in-out;
+}
+
+
+.logo {
+
+    /* background-image: url('/img/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat; */
+   width: 20.36%;
+    height: 8.52%;
+    margin: 3% 0 0 10%;
+
+
+}
+
+
+.behance{
+    content: url('https://api.iconify.design/jam/behance-square.svg?color=white');
+    width: 4.3%;
+    height: 4.3%;
+    float: right;
+    margin-top: -5.5%;
+    margin-right: 15%;
+    box-sizing: border-box;
+}
+
+.ig{
+    content: url('https://api.iconify.design/bi/instagram.svg?color=white');
+    width: 3.7%;
+    height: 3.7%;
+    float: right;
+    margin-top: -5.3%;
+    margin-right: 10%;
+    box-sizing: border-box;
+}
+
+.email {
+    content: url('https://api.iconify.design/carbon/email.svg?color=white');
+    width: 5.6%;
+    height: 5.6%;
+    float: right;
+    margin-top: -6.3%;
+    margin-right: 3%;
+    box-sizing: border-box;
+    
+}
+
+.meniu {
+    width: 10.42%;
+    height: 28.98%;
+    margin: 10% auto;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2vw;
+    color: white;
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.853);
+    
+    box-sizing: border-box;
+}
+.meniu ul li{
+  padding-top: 5%;
+}
+footer {
+  float: right;
+  margin-right: 1%;
+}
+footer p {
+  text-align: center;
+  
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1vw;
+  color: rgba(255, 255, 255, 0.911);
+
+}

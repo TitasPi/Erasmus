@@ -26,10 +26,10 @@
           </div>
           @endif
           <h5 class="font-medium leading-tight text-xl mt-0 mb-2 text-blue-600">App settings</h5>
-          @if($update_available)
-            <div class="alert-warning">There is update available</div>
+          @if($updater->source()->isNewVersionAvailable())
+            <div class="alert-warning">You are currently running: {{ $updater->source()->getVersionInstalled() }}. There is update available ({{ $updater->source()->getVersionAvailable() }}) [TODO: Add update button]</div>
           @else
-            <div class="alert-success">You are up to date!</div>
+            <div class="alert-success">You are currently running: {{ $updater->source()->getVersionInstalled() }}. You are up to date!</div>
           @endif
           <div class="mb-3 xl:w-96">
             <label for="appName" class="form-label inline-block mb-2 text-gray-700">App name</label>

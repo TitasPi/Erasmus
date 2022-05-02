@@ -12,12 +12,9 @@ class SettingsController extends Controller
         return view('dashboard.settings.index');
     }
 
-    public function generic() {
-        $git_output = shell_exec('git status -uno');
+    public function generic(\Codedge\Updater\UpdaterManager $updater) {
 
-        $update_available = !strpos($git_output, 'Your branch is up to date');
-
-        return view('dashboard.settings.generic.index', compact('update_available'));
+        return view('dashboard.settings.generic.index', compact('updater'));
     }
 
     public function save_generic(GeneralSettings $generalSettings, Request $request) {

@@ -13,5 +13,15 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
-        require("tailwindcss"),
-    ]);
+        require('postcss-import'),
+        require('tailwindcss'),
+    ])
+    .postCss('resources/css/admin.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ])
+    .js('resources/js/admin.js', 'public/js');
+
+if (mix.inProduction()) {
+    mix.version();
+}

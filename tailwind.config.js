@@ -1,26 +1,25 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-  ],
-  theme: {
-    extend: {},
-    screens: {
-      'sm': '599px',
-      // => @media (min-width: 599px) { ... }
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/laravel/jetstream/**/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './node_modules/tw-elements/dist/js/**/*.js'
+    ],
 
-      'md': '1023px',
-      // => @media (min-width: 1023px) { ... }
-
-      'lg': '1920px',
-      // => @media (min-width: 1920px) { ... }
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-    // spacing: {
-    //   sm: '16px',
-    //   md: '24px',
-    //   lg: '24px',
-    // }
-  },
-  plugins: [],
-}
+
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+        require('tw-elements/dist/plugin')
+    ],
+};

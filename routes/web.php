@@ -72,10 +72,12 @@ Route::middleware([
 
   Route::prefix('collections')->group(function () {
     Route::get('/', [CollectionController::class, 'collections'])->name('dashboard.collections');
-    Route::get('/add', [CollectionController::class, 'addCollection'])->name('dashboard.collections.add');
+    Route::get('/add', [CollectionController::class, 'addCollectionView'])->name('dashboard.collections.add');
+    Route::post('/add', [CollectionController::class, 'addCollection']);
 
     Route::prefix('{collection}')->group(function () {
-      Route::get('/edit', [CollectionController::class, 'editCollection'])->name('dashboard.collections.edit');
+      Route::get('/edit', [CollectionController::class, 'editCollectionView'])->name('dashboard.collections.edit');
+      Route::post('/edit', [CollectionController::class, 'editCollection']);
       Route::get('/remove', [CollectionController::class, 'removeCollection'])->name('dashboard.collections.remove');
       Route::get('/hide', [CollectionController::class, 'hideCollection'])->name('dashboard.collections.hide');
       Route::get('/show', [CollectionController::class, 'showCollection'])->name('dashboard.collections.show');

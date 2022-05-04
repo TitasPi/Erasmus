@@ -9,6 +9,12 @@ class Collection extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'icon',
+        'short_description'
+    ];
+
     public function albums() {
         return $this->hasMany(Album::class);
     }

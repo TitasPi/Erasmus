@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
+use App\Models\Collection;
 use Config;
 use GeneralSettings;
 use Illuminate\Http\Request;

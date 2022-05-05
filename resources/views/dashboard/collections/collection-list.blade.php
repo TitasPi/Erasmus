@@ -35,7 +35,7 @@
                 <a href="{{ route('dashboard.albums', ['collection' => $collection->id]) }}" class="link-secondary">{{$collection->name}} @if(!$collection->active) (hidden) @endif</a>
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {{$collection->icon}}
+                <img src="{{ asset($collection->icon) }}" />
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {{$collection->short_description}}

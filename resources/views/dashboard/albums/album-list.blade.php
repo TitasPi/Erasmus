@@ -18,7 +18,7 @@
                 Long description
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Actions 🧨 <a href="{{ route('dashboard.collections.add') }}" class="font-bold border-4 rounded p-1">NEW ✨</a>
+                Actions 🧨 <a href="{{ route('dashboard.albums.add', ['collection' => $collection->id]) }}" class="font-bold border-4 rounded p-1">NEW ✨</a>
               </th>
             </tr>
           </thead>

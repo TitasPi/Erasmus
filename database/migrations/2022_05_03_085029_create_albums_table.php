@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('short_description');
-            $table->longText('long_description');
+            $table->longText('long_description')->nullable();
             $table->date('date');
             $table->foreignIdFor(Collection::class)->constrained('collections');
             $table->timestamps();

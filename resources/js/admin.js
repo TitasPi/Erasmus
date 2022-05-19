@@ -1,6 +1,11 @@
 import "tw-elements";
+import Alpine from 'alpinejs';
 
-if (window.location.pathname == "/dashboard/collections/1/albums/1") {
+window.Alpine = Alpine;
+
+Alpine.start();
+
+if (window.location.pathname.includes("/dashboard/collections/") && window.location.pathname.includes("/albums/")) {
     console.log("Loading photo preview plugin...");
 
     global.img_preview = (url) => {
@@ -16,7 +21,7 @@ if (window.location.pathname == "/dashboard/collections/1/albums/1") {
             }
             hover_img.id = "hover_img";
 
-            hover_img.src = `/${url}`;
+            hover_img.src = `/thumbnail/${url}`;
             hover_img.style.position = "fixed";
 
             const e = window.event;
@@ -28,7 +33,7 @@ if (window.location.pathname == "/dashboard/collections/1/albums/1") {
             hover_img.style.left = posX+50 + 'px';
             hover_img.style.top = posY-50 + 'px';
 
-            hover_img.style.maxWidth = '40%';
+            hover_img.style.maxWidth = '50%';
 
             hover_img.style.border = 'black 2px solid';
             hover_img.style.borderRadius = '10px';

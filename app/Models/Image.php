@@ -9,6 +9,11 @@ class Image extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'album_id',
+        'src'
+    ];
+
     public function album() {
         return $this->hasOne(Album::class);
     }

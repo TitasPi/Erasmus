@@ -4,7 +4,7 @@
     </div>
 
     <div class="mt-8 text-2xl">
-        Welcome to your {{env('APP_NAME')}}!
+        Welcome to your {{app(GeneralSettings::class)->site_name}}!
     </div>
 
     <div class="mt-6 text-gray-500">
@@ -21,7 +21,7 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                This documentation will provide a helpful insight in how you should manage your {{env('APP_NAME')}}
+                This documentation will provide a helpful insight in how you should manage your {{app(GeneralSettings::class)->site_name}}
             </div>
 
             <a href="{{route('dashboard.documentation')}}">

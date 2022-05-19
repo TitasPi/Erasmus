@@ -28,11 +28,15 @@ class CollectionController extends Controller
     public function addCollection(Request $request) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'icon' => 'required|max:5',
-            'short_description' => 'required|string|max:255'
+            'icon' => 'required|max:255',
+            'short_description' => 'required|string|max:512'
         ]);
 
-        Collection::create($validated);
+        Collection::create([
+            'name_en' => request('name'),
+            'icon' => request('icon'),
+            'short_description_en' => request('short_description')
+        ]);
         return redirect()->route('dashboard.collections');
     }
 
@@ -41,12 +45,21 @@ class CollectionController extends Controller
     }
     public function editCollection(Collection $collection, Request $request) {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'icon' => 'required|max:5',
-            'short_description' => 'required|string|max:255'
+            'name_en' => 'max:255',
+            'name_fr' => 'max:255',
+            'icon' => 'required|max:255',
+            'short_description_en' => 'max:512',
+            'short_description_fr' => 'max:512'
         ]);
 
-        $collection->update($validated);
+        $collection->update([
+            'icon' => request('icon')
+        ]);
+        $collection->setTranslation('name', 'en', request('name_en'));
+        $collection->setTranslation('name', 'fr', request('name_fr'));
+        $collection->setTranslation('short_description', 'en', request('short_description_en'));
+        $collection->setTranslation('short_description', 'fr', request('short_description_fr'));
+        $collection->save();
         return redirect()->route('dashboard.collections');
     }
 

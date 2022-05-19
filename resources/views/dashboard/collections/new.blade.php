@@ -29,7 +29,7 @@
         <form action="" method="post">
           @csrf
           <div class="mb-3 xl:w-96">
-            <label for="name" class="form-label inline-block mb-2 text-gray-700">Name (internal)</label>
+            <label for="name" class="form-label inline-block mb-2 text-gray-700">Name (internal) 🇺🇸</label>
             <input type="text" class="form-input" id="name" name="name" placeholder="Enter name" value="{{ old('name') }}" />
           </div>
           <div class="mb-3 xl:w-96">
@@ -37,7 +37,7 @@
             <input type="text" class="form-input" id="icon" name="icon" placeholder="Enter icon" value="{{ old('icon') }}" />
           </div>
           <div class="mb-3 xl:w-96">
-            <label for="short_description" class="form-label inline-block mb-2 text-gray-700">Short Description</label>
+            <label for="short_description" class="form-label inline-block mb-2 text-gray-700">Short Description 🇺🇸</label>
             <input type="text" class="form-input" id="short_description" name="short_description" placeholder="Enter short description" value="{{ old('short_description') }}" />
           </div>
           <button type="submit" class="btn-success">Create</button>

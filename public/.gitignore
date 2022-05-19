@@ -1,0 +1,7 @@
+# Generated js and css files
+/js/*
+/css/*
+
+# Image uploads
+/thumbnail/*
+/images/*

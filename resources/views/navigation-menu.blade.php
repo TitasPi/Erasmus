@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('dashboard.settings') }}" :active="request()->routeIs('dashboard.settings')">
                         {{ __('Settings') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="/translations">
+                        {{ __('Translations') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -151,6 +154,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('dashboard.settings') }}" :active="request()->routeIs('dashboard.settings')">
                 {{ __('Settings') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="/translations">
+                {{ __('Translations') }}
             </x-jet-responsive-nav-link>
         </div>
 

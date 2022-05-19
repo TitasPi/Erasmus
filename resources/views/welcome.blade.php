@@ -1,48 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{env('APP_NAME') ?? 'Page title'}}</title>
-  <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-  <!-- font -->
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
-</head>
-<body class="background">
-  <header>
-    <img class="logo" src="img/logo.png" alt="">
-    <div class="email"> </div>
-    <div class="ig"> </div>
-    <div class="behance"> </div>
+@extends('layouts.public')
 
+@section('head')
 
+@endsection
 
-  </header>
-  <nav class="meniu">
-    <ul>
-      <li style="padding-top: 13%"><u>Album 1</u></li>
-      <li><u>Album 2</u></li>
-      <li><u>Album 3</u></li>
-      <li><u>Album 4</u></li>
-      <li> </li>
-      <li> </li>
-      <li> </li>
+@section('header')
+<header class='h-screen'>
+  <div class='columns-2 gap-0'>
+    <img src="{{ asset('img/welcome-background.jpg') }}" alt="" class="h-screen w-[50vw] object-cover img-load">
+    <div>
+      @include('welcome-nav')
 
-    </ul>
+      <div class="custom-font -rotate-90 text-9xl relative left-[-40%] top-80">
+        <p>Yoann Baty</p>
+      </div>
+    </div>
+  </div>
+</header>
+@endsection
 
+@section('content')
+  @php
+    $collections = \App\Models\Collection::where('active', true)->get();
+  @endphp
+  @for ($x = 0; $x < $collections->count(); $x++)
+    @php
+      $collection = $collections[$x];
+    @endphp
+    @if($x % 2 == 0)
+      @include('layouts.welcome1', ['collection' => $collection])
+    @else
+      @include('layouts.welcome2', ['collection' => $collection])
+    @endif
+  @endfor
+@endsection
 
-  </nav>
-  <footer>
-    <p>Tom Rinke</p>
-    <p>Photography</p>
+@section('footer')
+  @include('footer')
+@endsection
 
-  </footer>
-</body>
-</html>
+@section('scripts')
+  @env('local')
+  {{-- <script src="http://localhost:35729/livereload.js"></script> --}}
+  @endenv
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+@endsection

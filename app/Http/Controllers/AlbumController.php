@@ -51,9 +51,9 @@ class AlbumController extends Controller
         }
 
         Album::create([
-            'title_en' => request('title'),
-            'short_description_en' => request('short_description'),
-            'long_description_en' => request('long_description') ?? '',
+            'title' => request('title'),
+            'short_description' => request('short_description'),
+            'long_description' => request('long_description') ?? '',
             'date' => Carbon::parse(str_replace('/', '-', request('date')))->locale('us')->format('Y-m-d'),
             'collection_id' => request('collection')
         ]);

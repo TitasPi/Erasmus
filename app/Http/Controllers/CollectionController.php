@@ -33,9 +33,9 @@ class CollectionController extends Controller
         ]);
 
         Collection::create([
-            'name_en' => request('name'),
+            'name' => request('name'),
             'icon' => request('icon'),
-            'short_description_en' => request('short_description')
+            'short_description' => request('short_description')
         ]);
         return redirect()->route('dashboard.collections');
     }

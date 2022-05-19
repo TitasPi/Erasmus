@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NavigationItemController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\WelcomeSettingsController;
 use App\Http\Middleware\LockInactiveSite;
 use App\Models\NavigationItem;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
   return view('welcome');
-})->middleware(LockInactiveSite::class);
+})->middleware(LockInactiveSite::class)->name('welcome');
+
+Route::get('{lang}', function($lang) {
+  app()->setLocale($lang);
+  return view('welcome');
+})->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('lang.welcome');
 
 // Route::get('/admin', function () {
 //   return view('admin.index');
@@ -84,13 +91,24 @@ Route::middleware([
       
       Route::prefix('albums')->group(function () {
         Route::get('/', [AlbumController::class, 'albums'])->name('dashboard.albums');
-        Route::get('/add', [AlbumController::class, 'addAlbum'])->name('dashboard.albums.add');
+        Route::get('/add', [AlbumController::class, 'addAlbumView'])->name('dashboard.albums.add');
+        Route::post('/add', [AlbumController::class, 'addAlbum']);
         
         Route::prefix('{album}')->group(function () {
           // Album preview with photos inside
           Route::get('/', [AlbumController::class, 'albumsImages'])->name('dashboard.albums.images');
+          Route::prefix('images')->group(function () {
+            Route::get('/add', [ImageController::class, 'uploadView'])->name('dashboard.images.upload');
+            Route::post('/add', [ImageController::class, 'upload']);
+            Route::prefix('{image}')->group(function () {
+              Route::get('/addToWelcomePage', [ImageController::class, 'addToWelcomePage'])->name('dashboard.image.addToWelcomePage');
+              Route::get('/removeFromWelcomePage', [ImageController::class, 'removeToWelcomePage'])->name('dashboard.image.removeFromWelcomePage');
+              Route::get('/remove', [ImageController::class, 'remove'])->name('dashboard.images.remove');
+            });
+          });
           
           Route::get('/edit', [AlbumController::class, 'editAlbum'])->name('dashboard.albums.edit');
+          Route::post('/edit', [AlbumController::class, 'edit']);
           Route::get('/remove', [AlbumController::class, 'removeAlbum'])->name('dashboard.albums.remove');
           // TODO: add/remove from main page
           // TODO: image add/remove

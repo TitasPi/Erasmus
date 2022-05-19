@@ -32,12 +32,12 @@
             <input type="text" class="form-input" id="title" name="title" placeholder="Enter title" value="{{ old('title') }}" />
           </div>
           <div class="mb-3 xl:w-96">
-            <label for="short_description" class="form-label inline-block mb-2 text-gray-700">Short Description</label>
+            <label for="short_description" class="form-label inline-block mb-2 text-gray-700">Short Description 🇺🇸</label>
             <input type="text" class="form-input" id="short_description" name="short_description" placeholder="Enter short description" value="{{ old('short_description') }}" />
           </div>
           <div class="mb-3 xl:w-96">
-            <label for="long_description" class="form-label inline-block mb-2 text-gray-700">Long description</label>
-            <textarea class="form-input" id="long_description" name="long_description" rows="3" placeholder="Leave empty to show short description"></textarea>
+            <label for="long_description" class="form-label inline-block mb-2 text-gray-700">Long description 🇺🇸</label>
+            <textarea class="form-input" id="long_description" name="long_description" rows="3" placeholder="Leave empty to show short description">{{ old('long_description') }}</textarea>
           </div>
           <div class="mb-3 xl:w-96">
             <div class="datepicker relative form-floating mb-3 xl:w-96">
@@ -48,8 +48,8 @@
           <div class="mb-3 xl:w-96">
             <select class="form-select-custom" aria-label="Select collection" name="collection">
               <option selected>Select collection</option>
-              @foreach (\App\Models\Collection::all() as $collection)
-              <option value="{{ $collection->id }}">{{ $collection->name }} -> {{ $collection->icon }}</option>
+              @foreach (\App\Models\Collection::all() as $c)
+              <option value="{{ $c->id }}" @if($collection->id == $c->id) selected @endif>{{ $c->name }} -> {{ $c->icon }}</option>
               @endforeach
             </select>
           </div>

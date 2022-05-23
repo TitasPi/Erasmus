@@ -19,10 +19,11 @@
         </div>
       </div>
     </div>
-    <a href="#todo" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{ __('nav.about_me') }}</a>
+    <a href="{{ route('about', ['lang' => App::currentLocale()]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{ __('nav.about_me') }}</a>
     @if(App::currentLocale() == 'en')
-      <a href="{{ route('lang.welcome', ['lang' => 'fr']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
+      <a href="{{ route(Route::currentRouteName(), ['lang' => 'fr']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
+      {{-- <a href="{{ route('lang.welcome', ['lang' => 'fr']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a> --}}
     @else
-      <a href="{{ route('lang.welcome', ['lang' => 'en']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
+      <a href="{{ route(Route::currentRouteName(), ['lang' => 'en']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
     @endif
 </nav>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ImageController;
@@ -24,13 +25,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  // return view('welcome');
+  return redirect()->route('lang.welcome', ['lang' => 'en']);
 })->middleware(LockInactiveSite::class)->name('welcome');
 
-Route::get('{lang}', function($lang) {
+Route::get('/{lang}', function($lang) {
   app()->setLocale($lang);
   return view('welcome');
 })->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('lang.welcome');
+
+Route::get('/{lang}/about', [AboutController::class, 'index'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('about');
+Route::post('/{lang}/about', [AboutController::class, 'contact'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class);
 
 // Route::get('/admin', function () {
 //   return view('admin.index');

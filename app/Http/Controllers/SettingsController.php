@@ -22,11 +22,13 @@ class SettingsController extends Controller
     public function save_generic(GeneralSettings $generalSettings, Request $request) {
         // dd(request('site_active'));
         $request->validate([
-            'site_name' => 'required|string|max:20'
+            'site_name' => 'required|string|max:20',
+            'contact_email' => 'required|email'
         ]);
 
         $generalSettings->site_name = request('site_name');
         $generalSettings->site_active = request('site_active') ?? false;
+        $generalSettings->contact_email = request('contact_email');
         $generalSettings->save();
 
         return redirect()->back();

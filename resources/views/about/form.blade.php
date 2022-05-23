@@ -22,15 +22,15 @@
       @endif
       @csrf
       <div class="mb-3 xl:w-96">
-        <label for="name" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourName') }}</label>
+        <label for="name" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourName.title') }}</label>
         <input type="text" class="form-input" id="name" name="name" placeholder="{{ __('contact.yourName.help') }}" value="{{ old('name') }}" />
       </div>
       <div class="mb-3 xl:w-96">
-        <label for="email" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourEmail') }}</label>
+        <label for="email" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourEmail.title') }}</label>
         <input type="email" class="form-input" id="email" name="email" placeholder="{{ __('contact.yourEmail.help') }}" value="{{ old('email') }}" />
       </div>
       <div class="mb-3 xl:w-96">
-        <label for="message" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourMessage') }}</label>
+        <label for="message" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourMessage.title') }}</label>
         <textarea class="form-input" id="message" name="message" rows="3" placeholder="{{ __('contact.yourMessage.help') }}">{{ old('message') }}</textarea>
       </div>
       <button type="submit" class='btn-success'>{{ __('contact.send') }} Send</button>

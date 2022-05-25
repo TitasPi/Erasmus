@@ -32,7 +32,7 @@
             <div class="alert-success">You are currently running: {{ $updater->source()->getVersionInstalled() }}. You are up to date!</div>
           @endif
           <div class="mb-3 xl:w-96">
-            <label for="appName" class="form-label inline-block mb-2 text-gray-700">App name</label>
+            <label for="site_name" class="form-label inline-block mb-2 text-gray-700">App name</label>
             <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="site_name" name="site_name" placeholder="Site name" value="{{ app(GeneralSettings::class)->site_name }}" />
           </div>
           <div class="mb-3 xl:w-96">
@@ -42,6 +42,10 @@
                 Site active
               </label>
             </div>
+          </div>
+          <div class="mb-3 xl:w-96">
+            <label for="contact_email" class="form-label inline-block mb-2 text-gray-700">Contact email</label>
+            <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="contact_email" name="contact_email" placeholder="Contact email" value="{{ app(GeneralSettings::class)->contact_email }}" />
           </div>
 
           <button type="submit" class="btn-success">Save</button>

@@ -15,8 +15,8 @@ window.onload = function() {
       'img/welcome-background-7.jpg',
     ];
   
-    global.currentImageIndex = 0;
-    global.imageSlideshowActive = true;
+    global.currentImageIndex = -1;
+    global.imageSlideshowActive = false;
   
     const interval = setInterval(function() {
       changeBackgroundImage();
@@ -43,4 +43,5 @@ window.onload = function() {
       }
     }
   }
+  changeBackgroundImage();
 }

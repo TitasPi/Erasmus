@@ -16,3 +16,58 @@
 .img-load {
   @apply bg-[url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.invescoeasysteps.ie%2Fimg%2Floading.gif&f=1&nofb=1')] bg-transparent bg-center bg-no-repeat;
 }
+
+@layer components {
+  .form-input {
+    @apply form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+  }
+  .form-select-custom {
+    @apply form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+  }
+}
+
+/* Btns */
+@layer components {
+  .btn {
+    @apply inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+  }
+
+  .btn-secondary {
+    @apply inline-block px-6 py-2 border-2 border-purple-600 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+  }
+
+  .btn-success {
+    @apply inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+  }
+
+  .btn-danger {
+    @apply inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+  }
+
+  .btn-warning {
+    @apply inline-block px-6 py-2 border-2 border-yellow-500 text-yellow-500 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+  }
+
+  .btn-info {
+    @apply inline-block px-6 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out;
+  }
+}
+
+/* Alerts */
+@layer components {
+  .alert {
+    @apply bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700;
+  }
+
+  .alert-success {
+    @apply bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700;
+  }
+
+  .alert-danger {
+    @apply bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700;
+  }
+
+  .alert-warning {
+    @apply bg-yellow-100 rounded-lg py-5 px-6 mb-4 text-base text-yellow-700;
+  }
+}

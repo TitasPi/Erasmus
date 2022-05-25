@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 
 class CollectionController extends Controller
 {
+    // TODO: add middlewares
     // Index page (public)
-    public function index() {
-        $collections = Collection::where('active', true)->all();
+    public function index(String $lang, Collection $collection) {
         // Return a view with collections
+        return view('collections.list', compact('collection'));
     }
 
     // Settings/Listing (private)

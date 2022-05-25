@@ -34,7 +34,7 @@
           </div>
           <div class="mb-3 xl:w-96">
             <label for="icon" class="form-label inline-block mb-2 text-gray-700">Icon (shown to visitors)</label>
-            <input type="text" class="form-input" id="icon" name="icon" placeholder="Enter icon" value="{{ old('icon') }}" />
+            <input type="text" class="form-input" oninput="updateIcon()" id="icon" name="icon" placeholder="Enter icon" value="{{ old('icon') }}" />Preview: <i class="" id="icon_preview"></i>
           </div>
           <div class="mb-3 xl:w-96">
             <label for="short_description" class="form-label inline-block mb-2 text-gray-700">Short Description 🇺🇸</label>
@@ -44,4 +44,12 @@
         </form>
       </div>
     </div>
+    <script>
+      const iconInput = document.getElementById('icon');
+      const iconPreview = document.getElementById('icon_preview');
+
+      function updateIcon() {
+        iconPreview.className = iconInput.value;
+      }
+    </script>
 </x-app-layout>

@@ -38,6 +38,7 @@ Route::get('/{lang}/about', [AboutController::class, 'index'])->whereIn('lang', 
 Route::post('/{lang}/about', [AboutController::class, 'contact'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class);
 
 Route::get('/{lang}/{collection}', [CollectionController::class, 'index'])->name('collection');
+Route::get('/{lang}/{collection}/{album}', [AlbumController::class, 'index'])->name('album');
 
 // Route::get('/admin', function () {
 //   return view('admin.index');

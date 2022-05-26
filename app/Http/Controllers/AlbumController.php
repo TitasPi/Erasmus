@@ -11,14 +11,8 @@ use Illuminate\Validation\ValidationException;
 class AlbumController extends Controller
 {
     // Index page (public)
-    public function index(Collection $collection) {
-        $albums = Album::where('collection_id', $collection->id)->all();
-        // Return a view with collection's albums
-    }
-
-    // Preview album (public)
-    public function preview(Collection $collection, Album $album) {
-
+    public function index(String $lang, Collection $collection, Album $album) {
+        return view('albums.list', compact('collection', 'album'));
     }
 
     // Settings/Listing (private)

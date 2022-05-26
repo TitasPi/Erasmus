@@ -22,12 +22,16 @@
     @if(App::currentLocale() == 'en')
       @if(Route::currentRouteName() == 'collection')
         <a href="{{ route(Route::currentRouteName(), ['lang' => 'fr', 'collection' => $collection]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
+      @elseif(Route::currentRouteName() == 'album')
+        <a href="{{ route(Route::currentRouteName(), ['lang' => 'fr', 'collection' => $collection, 'album' => $album]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
       @else
         <a href="{{ route(Route::currentRouteName(), ['lang' => 'fr']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
       @endif
     @else
       @if(Route::currentRouteName() == 'collection')
         <a href="{{ route(Route::currentRouteName(), ['lang' => 'en', 'collection' => $collection]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
+      @elseif(Route::currentRouteName() == 'album')
+        <a href="{{ route(Route::currentRouteName(), ['lang' => 'fr', 'collection' => $collection, 'album' => $album]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
       @else
         <a href="{{ route(Route::currentRouteName(), ['lang' => 'en']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
       @endif

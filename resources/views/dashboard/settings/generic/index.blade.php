@@ -27,7 +27,7 @@
           @endif
           <h5 class="font-medium leading-tight text-xl mt-0 mb-2 text-blue-600">App settings</h5>
           @if($updater->source()->isNewVersionAvailable())
-            <div class="alert-warning">You are currently running: {{ $updater->source()->getVersionInstalled() }}. There is update available ({{ $updater->source()->getVersionAvailable() }}) [TODO: Add update button]</div>
+            <div class="alert-warning">You are currently running: {{ $updater->source()->getVersionInstalled() }}. There is update available ({{ $updater->source()->getVersionAvailable() }}) <a href="{{ route('dashboard.settings.generic.update') }}" class='btn btn-danger'>UPDATE</a></div>
           @else
             <div class="alert-success">You are currently running: {{ $updater->source()->getVersionInstalled() }}. You are up to date!</div>
           @endif

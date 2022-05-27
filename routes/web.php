@@ -29,16 +29,6 @@ Route::get('/', function () {
   return redirect()->route('lang.welcome', ['lang' => 'en']);
 })->middleware(LockInactiveSite::class)->name('welcome');
 
-Route::get('/{lang}', function($lang) {
-  app()->setLocale($lang);
-  return view('welcome');
-})->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('lang.welcome');
-
-Route::get('/{lang}/about', [AboutController::class, 'index'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('about');
-Route::post('/{lang}/about', [AboutController::class, 'contact'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class);
-
-Route::get('/{lang}/{collection}', [CollectionController::class, 'index'])->name('collection');
-Route::get('/{lang}/{collection}/{album}', [AlbumController::class, 'index'])->name('album');
 
 // Route::get('/admin', function () {
 //   return view('admin.index');
@@ -64,6 +54,7 @@ Route::middleware([
     Route::prefix('generic')->group(function () {
       Route::get('/', [SettingsController::class, 'generic'])->name('dashboard.settings.generic');
       Route::post('/', [SettingsController::class, 'save_generic']);
+      Route::get('/update', [SettingsController::class, 'update'])->name('dashboard.settings.generic.update');
     });
 
     Route::prefix('welcome')->group(function () {
@@ -125,3 +116,14 @@ Route::middleware([
     });
   });
 });
+
+Route::get('/{lang}', function($lang) {
+  app()->setLocale($lang);
+  return view('welcome');
+})->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('lang.welcome');
+
+Route::get('/{lang}/about', [AboutController::class, 'index'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('about');
+Route::post('/{lang}/about', [AboutController::class, 'contact'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class);
+
+Route::get('/{lang}/{collection}', [CollectionController::class, 'index'])->name('collection');
+Route::get('/{lang}/{collection}/{album}', [AlbumController::class, 'index'])->name('album');

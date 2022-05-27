@@ -4,14 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use App\Models\Collection;
+use Artisan;
 use Config;
 use GeneralSettings;
 use Illuminate\Http\Request;
+use Spatie\Backup\Commands\BackupCommand;
 
 class SettingsController extends Controller
 {
     public function index() {
         return view('dashboard.settings.index');
+    }
+
+    public function update(\Codedge\Updater\UpdaterManager $updater) {
+        if ($updater->source()->isNewVersionAvailable()) {
+            echo $updater->source()->getVersionInstalled() . '. There is update available: ' . $updater->source()->getVersionAvailable();
+            echo 'System is being backed up and update will be installed';
+
+            $versionAvailable = $updater->source()->getVersionAvailable();
+
+            Artisan::call('backup:run');
+
+            $release = $updater->source()->fetch($versionAvailable);
+
+            $updater->source()->update($release);
+        } else {
+            echo 'You are running up to date version: ' . $updater->source()->getVersionInstalled();
+        }
     }
 
     public function generic(\Codedge\Updater\UpdaterManager $updater) {

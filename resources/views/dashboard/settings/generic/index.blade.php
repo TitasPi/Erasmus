@@ -14,7 +14,7 @@
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-2">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
-          <form action="" method="post">
+          <form action="" method="post" id="form">
           @csrf
           @if ($errors->any())
           <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700">
@@ -37,9 +37,17 @@
           </div>
           <div class="mb-3 xl:w-96">
             <div class="form-check">
-              <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="true" name="site_active" id="site_active" {{ (app(GeneralSettings::class)->site_active) ? 'checked' : '' }}>
+              <input class="form-check-custom" type="checkbox" value="true" name="site_active" id="site_active" {{ (app(GeneralSettings::class)->site_active) ? 'checked' : '' }}>
               <label class="form-check-label inline-block text-gray-800" for="site_active">
                 Site active
+              </label>
+            </div>
+          </div>
+          <div class="mb-3 xl:w-96">
+            <div class="form-check">
+              <input class="form-check-custom" type="checkbox" value="true" name="auth_enabled" id="auth_enabled" {{ (app(GeneralSettings::class)->auth_enabled) ? 'checked' : '' }}>
+              <label class="form-check-label inline-block text-gray-800" for="auth_enabled">
+                Registration enabled
               </label>
             </div>
           </div>

@@ -9,6 +9,8 @@ class GeneralSettings extends Settings
     public bool $site_active;
 
     public string $contact_email;
+
+    public bool $auth_enabled;
     
     public static function group(): string
     {

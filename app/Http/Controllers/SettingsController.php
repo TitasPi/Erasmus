@@ -48,6 +48,7 @@ class SettingsController extends Controller
         $generalSettings->site_name = request('site_name');
         $generalSettings->site_active = request('site_active') ?? false;
         $generalSettings->contact_email = request('contact_email');
+        $generalSettings->auth_enabled = request('auth_enabled') ?? false;
         $generalSettings->save();
 
         return redirect()->back();

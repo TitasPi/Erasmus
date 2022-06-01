@@ -9,7 +9,7 @@
             <div class="px-2 absolute top-[45px] left-0 w-full" x-show="open_{{$collection->id}}">
               <div class="flex flex-col justify-evenly items-center bg-[#F7F7F7]">
               @foreach ($collection->albums()->get() as $album)
-                  <button onclick="window.location.href='#goToAlbumPage-{{$album->id}}'" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7] tracking-widest font-sans">{{ $album->title }}</button>
+                  <button onclick="window.location.href='{{route('album', ['album' => $album->id, 'collection' => $collection->id, 'lang' => App::currentLocale()])}}'" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7] tracking-widest font-sans">{{ $album->title }}</button>
               @endforeach
               </div>
             </div>
@@ -31,7 +31,7 @@
       @if(Route::currentRouteName() == 'collection')
         <a href="{{ route(Route::currentRouteName(), ['lang' => 'en', 'collection' => $collection]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
       @elseif(Route::currentRouteName() == 'album')
-        <a href="{{ route(Route::currentRouteName(), ['lang' => 'fr', 'collection' => $collection, 'album' => $album]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_French')}}</a>
+        <a href="{{ route(Route::currentRouteName(), ['lang' => 'en', 'collection' => $collection, 'album' => $album]) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
       @else
         <a href="{{ route(Route::currentRouteName(), ['lang' => 'en']) }}" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]">{{__('nav.change_to_English')}}</a>
       @endif

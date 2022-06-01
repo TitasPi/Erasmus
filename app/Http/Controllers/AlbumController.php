@@ -12,6 +12,7 @@ class AlbumController extends Controller
 {
     // Index page (public)
     public function index(String $lang, Collection $collection, Album $album) {
+        app()->setLocale($lang);
         return view('albums.list', compact('collection', 'album'));
     }
 

@@ -5,7 +5,7 @@
   </div>
   <div data-aos="fade-left" class="w-full text-center p-5 group relative">
     <div class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold bg-slate-600 bg-opacity-70">
-      <a href="#goToCollection">Explore more...</a>
+      <a href="{{ route('collection', ['lang' => App::currentLocale(), 'collection' => $collection->id]) }}">Explore more...</a>
     </div>
     @php
       $images = $collection->welcome_images();

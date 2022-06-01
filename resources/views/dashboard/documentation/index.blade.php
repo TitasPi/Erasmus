@@ -25,7 +25,15 @@
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
         <h4 class="font-medium leading-tight text-2xl mt-0 mb-2 text-blue-600">How to update the system ⭐</h4>
         <p class="text-xl font-light leading-relaxed mt-6 mb-4 text-gray-800">
-          Update process happens <strong>automagically</strong> every midnight. You can check if you have latest version in <a class="bg-blue-200" href="{{ route('dashboard.settings.generic') }}">generic settings</a> page.
+          Updates are being checked every midnight, and if there are an update pending, you will get an email to your chosen email. You can start update in settings, and update will be installed <strong>automagically</strong>. You can check if you have latest version in <a class="bg-blue-200" href="{{ route('dashboard.settings.generic') }}">generic settings</a> page.
+        </p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-2">
+      <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
+        <h4 class="font-medium leading-tight text-2xl mt-0 mb-2 text-blue-600">How are the backups handled? 🔒</h4>
+        <p class="text-xl font-light leading-relaxed mt-6 mb-4 text-gray-800">
+          Backups are <strong>automagically</strong> started in midnight of every day and backup is done before any update to ensure data integrity. Backups include the whole website with all the pictures and data in database.
         </p>
       </div>
     </div>

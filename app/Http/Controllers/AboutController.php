@@ -9,7 +9,8 @@ use Mail;
 
 class AboutController extends Controller
 {
-    public function index() {
+    public function index($lang) {
+        app()->setLocale($lang);
         return view('about.index');
     }
 

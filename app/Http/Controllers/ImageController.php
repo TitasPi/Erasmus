@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use App\Models\Collection;
 use App\Models\Image;
+use File;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as FacadesImage;
+use Storage;
 
 class ImageController extends Controller
 {
@@ -54,7 +56,22 @@ class ImageController extends Controller
         return redirect()->route('dashboard.albums.images', ['collection' => $collection->id, 'album' => $album->id]);
     }
 
-    public function remove(Image $image) {
+    public function remove(Collection $collection, Album $album, Image $image) {
+        File::delete(public_path('images/' . $image->src));
+        File::delete(public_path('thumbnail/' . $image->src));
+        $image->delete();
+        return back();
         // TODO: removing images from db and storage
+    }
+
+    public function addToWelcomePage(Collection $collection, Album $album, Image $image) {
+        $image->is_on_welcome_page = true;
+        $image->save();
+        return back();
+    }
+    public function removeFromWelcomePage(Collection $collection, Album $album, Image $image) {
+        $image->is_on_welcome_page = false;
+        $image->save();
+        return back();
     }
 }

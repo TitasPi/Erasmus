@@ -101,7 +101,7 @@ Route::middleware([
             Route::post('/add', [ImageController::class, 'upload']);
             Route::prefix('{image}')->group(function () {
               Route::get('/addToWelcomePage', [ImageController::class, 'addToWelcomePage'])->name('dashboard.image.addToWelcomePage');
-              Route::get('/removeFromWelcomePage', [ImageController::class, 'removeToWelcomePage'])->name('dashboard.image.removeFromWelcomePage');
+              Route::get('/removeFromWelcomePage', [ImageController::class, 'removeFromWelcomePage'])->name('dashboard.image.removeFromWelcomePage');
               Route::get('/remove', [ImageController::class, 'remove'])->name('dashboard.images.remove');
             });
           });
@@ -125,5 +125,5 @@ Route::get('/{lang}', function($lang) {
 Route::get('/{lang}/about', [AboutController::class, 'index'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('about');
 Route::post('/{lang}/about', [AboutController::class, 'contact'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class);
 
-Route::get('/{lang}/{collection}', [CollectionController::class, 'index'])->name('collection');
-Route::get('/{lang}/{collection}/{album}', [AlbumController::class, 'index'])->name('album');
+Route::get('/{lang}/{collection}', [CollectionController::class, 'index'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('collection');
+Route::get('/{lang}/{collection}/{album}', [AlbumController::class, 'index'])->whereIn('lang', ['en', 'fr'])->middleware(LockInactiveSite::class)->name('album');

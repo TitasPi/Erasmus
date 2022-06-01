@@ -33,6 +33,7 @@
     @php
       $album = $albums[$x];
     @endphp
+    @if (count($album->images) > 0)
     <div class='columns-2'>
       <div class='col-span-1 w-[50vw]'>
         <img src="/images/{{$album->images[0]->src}}" alt="" class="w-1/2 mx-auto opacity-0">
@@ -42,6 +43,7 @@
         <img src="/images/{{$album->images[0]->src}}" alt="" class="w-1/2 mx-auto">
       </div>
     </div>
+    @endif
   @endfor
 @endsection
 

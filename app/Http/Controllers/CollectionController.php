@@ -10,6 +10,7 @@ class CollectionController extends Controller
     // TODO: add middlewares
     // Index page (public)
     public function index(String $lang, Collection $collection) {
+        app()->setLocale($lang);
         // Return a view with collections
         return view('collections.list', compact('collection'));
     }

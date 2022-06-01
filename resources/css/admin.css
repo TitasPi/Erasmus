@@ -2,6 +2,17 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'Steinfeld Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Steinfeld Regular'), url('/fonts/Steinfeld DEMO.woff') format('woff');
+}
+
+.custom-font {
+  font-family: 'Steinfeld Regular';
+}
+
 /* Links */
 @layer components {
   .link {

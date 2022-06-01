@@ -5,9 +5,9 @@
     @endforeach
   </div>
   <div class="flex justify-evenly px-96 py-5 text-4xl">
-    <a href="">{{ __('footer.about_me') }}</a>
-    <a href="">{{ __('footer.privacy_policy') }}</a>
-    <a href="">{{ __('footer.contact') }}</a>
+    <a href="{{ route('about', ['lang' => App::currentLocale()]) }}">{{ __('footer.about_me') }}</a>
+    <a href="{{ route('policy.show') }}">{{ __('footer.privacy_policy') }}</a>
+    <a href="{{ route('about', ['lang' => App::currentLocale()]) }}">{{ __('footer.contact') }}</a>
   </div>
   <div class="flex justify-center px-96 py-5">
     <a href=""><img src="{{ asset('svg/instagram.svg') }}" alt=""></a>

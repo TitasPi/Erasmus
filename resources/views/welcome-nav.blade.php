@@ -1,6 +1,7 @@
 <nav class="flex justify-evenly items-center bg-[#F7F7F7] mx-2 relative z-10">
     <div id="navbar" class="p-2 w-full h-full text-center no-underline text-black hover:bg-[#D7D7D7]" x-data="{ open: false }" onmouseover="this._x_dataStack[0].$data.open = true" onmouseout="this._x_dataStack[0].$data.open = false">
-    {{ __('nav.collections') }}
+    <button onclick="window.location.href='{{route('lang.welcome', ['lang' => App::currentLocale()])}}'">{{ __('nav.collections') }}</button>
+    {{-- TODO: link to main page --}}
       <div class="fixed top-[40px] right-[0px] px-2 w-1/2" x-show="open">
         <div class="flex justify-evenly items-center bg-[#F7F7F7]">
         @foreach (\App\Models\Collection::where('active', True)->get() as $collection)

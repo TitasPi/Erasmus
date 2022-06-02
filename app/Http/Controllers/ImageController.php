@@ -29,7 +29,6 @@ class ImageController extends Controller
     }
     
     public function upload(Request $request, Collection $collection, Album $album) {
-        // TODO: Receiving & compressing images
         $request->validate([
             'image' => 'file|required|max:10000000|mimes:png,jpg,jpeg'
         ]);
@@ -39,6 +38,10 @@ class ImageController extends Controller
 
         $destinationPath = public_path('thumbnail');
 
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath);
+        }
+
         $img = FacadesImage::make($image->getRealPath());
         
         $img->resize($img->width()/4, $img->height()/4, function($constraint) {
@@ -46,6 +49,11 @@ class ImageController extends Controller
         })->save($destinationPath.'/'.$input['imagename']);
 
         $destinationPath = public_path('images');
+        
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath);
+        }
+
         $image->move($destinationPath, $input['imagename']);
 
         Image::create([

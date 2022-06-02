@@ -33,7 +33,7 @@
         <label for="message" class="form-label inline-block mb-2 text-gray-700">{{ __('contact.yourMessage.title') }}</label>
         <textarea class="form-input" id="message" name="message" rows="3" placeholder="{{ __('contact.yourMessage.help') }}">{{ old('message') }}</textarea>
       </div>
-      <button type="submit" class='btn-success'>{{ __('contact.send') }} Send</button>
+      <button type="submit" class='btn-success'>{{ __('contact.send') }}</button>
     </form>
   </div>
 </div>

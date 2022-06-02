@@ -24,14 +24,15 @@
   </div>
 </header>
 @endsection
-
 @section('content')
   @php
     $images = $album->images;
   @endphp
     <div class='flex'>
       <div class='w-[70vw]'>
+        @if (count($images) > 0)
         <img src="/images/{{$images[0]->src}}" alt="" class="w-1/2 mx-auto opacity-0">
+        @endif
       </div>
       <div class='text-center'>
   @for ($x = 0; $x < $images->count(); $x++)
@@ -39,9 +40,9 @@
       $image = $images[$x];
     @endphp
       @if ($x % 2 == 0)
-        <img src="/images/{{$images[$x]->src}}" data-bs-toggle="modal" data-bs-target="#imagesModal" onclick="modalChangeImg('{{asset('images/'.$image->src)}}')" alt="" class="w-2/5 p-4 ml-auto hover:grayscale duration-500" onclick='alert(this.src)'>
+        <img src="/images/{{$images[$x]->src}}" data-bs-toggle="modal" data-bs-target="#imagesModal" onclick="modalChangeImg('{{asset('images/'.$image->src)}}')" alt="" class="w-2/5 p-4 ml-auto hover:grayscale duration-500 cursor-pointer" onclick='alert(this.src)'>
       @else
-        <img src="/images/{{$images[$x]->src}}" data-bs-toggle="modal" data-bs-target="#imagesModal" onclick="modalChangeImg('{{asset('images/'.$image->src)}}')" alt="" class="w-2/5 p-4 mr-auto hover:grayscale duration-500" onclick='alert(this.src)'>
+        <img src="/images/{{$images[$x]->src}}" data-bs-toggle="modal" data-bs-target="#imagesModal" onclick="modalChangeImg('{{asset('images/'.$image->src)}}')" alt="" class="w-2/5 p-4 mr-auto hover:grayscale duration-500 cursor-pointer" onclick='alert(this.src)'>
       @endif
   @endfor
       </div>

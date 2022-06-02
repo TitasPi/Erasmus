@@ -39,8 +39,8 @@
         <img src="/images/{{$album->images[0]->src}}" alt="" class="w-1/2 mx-auto opacity-0">
       </div>
       <div class='text-center group' onclick='window.location.href="{{ route("album", ["lang" => App::currentLocale(), "collection" => $collection->id, "album" => $album->id]) }}"'>
-        <p class='relative rotate-90 text-7xl top-40 -right-80 group-hover:text-8xl duration-300'>{{ $album->title }}</p>
-        <img src="/images/{{$album->images[0]->src}}" alt="" class="w-1/2 mx-auto">
+        <p class='relative rotate-90 text-7xl top-40 -right-80 group-hover:text-8xl duration-300 cursor-pointer'>{{ $album->title }}</p>
+        <img src="/images/{{$album->images[0]->src}}" alt="" class="w-1/2 mx-auto cursor-pointer">
       </div>
     </div>
     @endif
